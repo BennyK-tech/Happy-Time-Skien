@@ -200,6 +200,13 @@ const CAT_EMOJI = {
   drikke: '🥤'
 };
 
+function previewSlug(s) {
+  return s.toLowerCase()
+    .replace(/æ/g, 'ae').replace(/ø/g, 'o').replace(/å/g, 'a')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 function renderPreview(category) {
   const grid = document.getElementById('preview-grid');
   if (!grid) return;
@@ -213,9 +220,12 @@ function renderPreview(category) {
             : '<span class="tag tag-spicy">🌶️ Sterk</span>'
         ).join('')}</div>`
       : '';
+    const imgSrc = it.image || `images/menu/${previewSlug(it.name)}.jpg`;
     return `
       <article class="item-card item-card-visual" data-cat="${category}">
-        <div class="item-visual"><span>${emoji}</span></div>
+        <div class="item-visual" data-emoji="${emoji}">
+          <img src="${imgSrc}" alt="${it.name}" loading="lazy" onerror="this.remove()" />
+        </div>
         <div class="item-body">
           <div class="item-card-top">
             <h4>${it.name}</h4>

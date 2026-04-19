@@ -79,6 +79,20 @@ const CATEGORIES = [
   { key: 'drikke',    label: 'Drikke' }
 ];
 
+const CAT_EMOJI = {
+  kebab: '🥙', pizza: '🍕', innbakt: '🥐', barnemeny: '🧒',
+  hamburger: '🍔', andre: '🍽️', fries: '🍟', drikke: '🥤'
+};
+
+/* Slugify name → filename in images/menu/<slug>.jpg.
+   Drop AI-generated images there and they appear automatically. */
+function slug(s) {
+  return s.toLowerCase()
+    .replace(/æ/g, 'ae').replace(/ø/g, 'o').replace(/å/g, 'a')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 /* ---------- RENDER ---------- */
 function renderMenuPage() {
   const sidebar = document.getElementById('menu-sidebar-list');
@@ -97,6 +111,7 @@ function renderMenuPage() {
   // Main content — grouped by category
   main.innerHTML = CATEGORIES.map(c => {
     const items = MENU_DATA.filter(i => i.cat === c.key);
+    const emoji = CAT_EMOJI[c.key] || '🍽️';
     const cardsHTML = items.map(it => {
       const tagsHTML = it.tags
         ? `<div class="item-tags">${it.tags.map(t =>
@@ -106,14 +121,20 @@ function renderMenuPage() {
           ).join('')}</div>`
         : '';
       const tagAttr = it.tags ? ` data-tags="${it.tags.join(',')}"` : '';
+      const imgSrc = it.image || `images/menu/${slug(it.name)}.jpg`;
       return `
-        <article class="item-card" data-name="${it.name.toLowerCase()}" data-desc="${it.desc.toLowerCase()}"${tagAttr}>
-          <div class="item-card-top">
-            <h4>${it.name}</h4>
-            <span class="item-price">${it.price} kr</span>
+        <article class="item-card item-card-visual" data-name="${it.name.toLowerCase()}" data-desc="${it.desc.toLowerCase()}"${tagAttr}>
+          <div class="item-visual" data-emoji="${emoji}">
+            <img src="${imgSrc}" alt="${it.name}" loading="lazy" onerror="this.remove()" />
           </div>
-          <p class="item-desc">${it.desc}</p>
-          ${tagsHTML}
+          <div class="item-body">
+            <div class="item-card-top">
+              <h4>${it.name}</h4>
+              <span class="item-price">${it.price} kr</span>
+            </div>
+            <p class="item-desc">${it.desc}</p>
+            ${tagsHTML}
+          </div>
         </article>
       `;
     }).join('');
