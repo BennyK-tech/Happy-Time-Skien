@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meny — Happy Time Skien</title>
+  <meta name="description" content="Full meny hos Happy Time Skien — kebab, pizza, innbakt pizza, burger, barnemeny og mer. Søk, filtrer og finn favoritten din." />
+  <link rel="icon" href="images/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/menu.css" />
+</head>
+<body>
+
+  <!-- ===== ANNOUNCEMENT BAR ===== -->
+  <div class="announcement" id="announcement">
+    <span class="ann-dot"></span>
+    <span class="ann-text">Sjekker åpningstider…</span>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.png" alt="Happy Time Skien logo" />
+        <div class="nav-logo-text">
+          Happy Time
+          <small>Skien · Nyåpnet 2026</small>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Hjem</a></li>
+        <li><a href="menu.html" class="active">Meny</a></li>
+        <li><a href="index.html#bestill">Bestill</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+      </ul>
+
+      <a href="tel:+4740334488" class="nav-phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +47 40 33 44 88
+      </a>
+
+      <button class="nav-burger" id="burger" aria-label="Åpne meny">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== MENU HERO ===== -->
+  <header class="menu-hero">
+    <div class="container">
+      <h1>Vår Meny</h1>
+      <span class="accent-line"></span>
+      <p>Alt fra saftige kebabruller og håndlagde pizzaer til burgere og barnemeny — tilberedt friskt når du bestiller.</p>
+    </div>
+  </header>
+
+  <!-- ===== SEARCH + FILTERS ===== -->
+  <section class="menu-tools">
+    <div class="container">
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="menu-search" placeholder="Søk i menyen..." autocomplete="off" aria-label="Søk i menyen" />
+        <button class="search-clear" id="search-clear" aria-label="Tøm søk">×</button>
+      </div>
+
+      <div class="filter-tags">
+        <button class="tag-btn" data-tag="vegetar">🌱 Vegetar</button>
+        <button class="tag-btn" data-tag="sterk">🌶️ Sterk</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MOBILE CATEGORY TABS ===== -->
+  <nav class="cat-tabs-mobile" aria-label="Kategorier">
+    <ul id="mobile-tabs-list"></ul>
+  </nav>
+
+  <!-- ===== MAIN LAYOUT ===== -->
+  <div class="container">
+    <div class="menu-layout">
+      <aside class="menu-sidebar">
+        <h5>Kategorier</h5>
+        <ul id="menu-sidebar-list"></ul>
+      </aside>
+
+      <div class="menu-main" id="menu-main"></div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <a href="index.html" class="footer-brand">
+            <img src="images/logo.png" alt="Happy Time Skien" />
+            <div>
+              <strong>Happy Time Skien</strong>
+              <small>Pizza · Kebab · Burger</small>
+            </div>
+          </a>
+
+          <div class="footer-socials" style="margin-top:18px;">
+            <a href="https://www.instagram.com/happy_timeskien/" target="_blank" rel="noopener" class="ig" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@happy_timeskien" target="_blank" rel="noopener" class="tt" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.3 6.7a5.5 5.5 0 01-3.3-1.2 5.4 5.4 0 01-1.5-2v9.8a4.3 4.3 0 11-4.3-4.3c.2 0 .5 0 .7.1v2.4a2 2 0 102 2V2h2.3a5.7 5.7 0 004.1 4.1v2.6z"/></svg>
+            </a>
+            <a href="tel:+4740334488" class="call" aria-label="Ring oss">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Kongens+gate+7,+3717+Skien" target="_blank" rel="noopener" class="pin" aria-label="Kart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Meny & Bestilling</h5>
+          <ul>
+            <li><a href="menu.html">Se full meny</a></li>
+            <li><a href="https://www.foodora.no/restaurant/vodl/happy-time-skien?srsltid=AfmBOoo6OMC879BTgv4Qrn4XQ-JuW_GRJDFhPZjx3l1pgUhdw6gSgdm9" target="_blank" rel="noopener">Foodora</a></li>
+            <li><a href="https://wolt.com/en/nor/oslo/restaurant/happy-time" target="_blank" rel="noopener">Wolt</a></li>
+            <li><a href="tel:+4740334488" class="footer-phone">Ring oss</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Følg oss</h5>
+          <ul>
+            <li><a href="https://www.instagram.com/happy_timeskien/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              Instagram
+            </a></li>
+            <li><a href="https://www.tiktok.com/@happy_timeskien" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.3 6.7a5.5 5.5 0 01-3.3-1.2 5.4 5.4 0 01-1.5-2v9.8a4.3 4.3 0 11-4.3-4.3c.2 0 .5 0 .7.1v2.4a2 2 0 102 2V2h2.3a5.7 5.7 0 004.1 4.1v2.6z"/></svg>
+              TikTok
+            </a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Kontakt</h5>
+          <ul>
+            <li><a href="tel:+4740334488" class="footer-phone">+47 40 33 44 88</a></li>
+            <li><a href="https://www.google.com/maps/dir/?api=1&destination=Kongens+gate+7,+3717+Skien" target="_blank" rel="noopener">Kongens gate 7, Skien</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© <span id="footer-year">2026</span> Happy Time Skien · Alle rettigheter reservert.</div>
+        <div>Nettside av <a href="https://nordrisenettsider.no" target="_blank" rel="noopener">nordrisenettsider.no</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MOBILE CTA BAR ===== -->
+  <div class="mobile-cta">
+    <a href="tel:+4740334488" class="cta-call">📞 Ring oss</a>
+    <a href="https://www.foodora.no/restaurant/vodl/happy-time-skien?srsltid=AfmBOoo6OMC879BTgv4Qrn4XQ-JuW_GRJDFhPZjx3l1pgUhdw6gSgdm9" target="_blank" rel="noopener" class="cta-order">🛵 Bestill på Foodora</a>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>
