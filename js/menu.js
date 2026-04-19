@@ -171,16 +171,24 @@ function norm(s) {
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
-/* Lightweight typo tolerance: returns true if haystack contains token,
-   or contains a near-match (Levenshtein ≤ 1 for tokens of length ≥ 4). */
+/* Typo + compressed-spelling tolerance.
+   Matches if haystack contains token, contains a near-match per word
+   (Levenshtein ≤ 1 for tokens ≥ 4 chars), OR if the token appears as a
+   substring in the haystack with small connector words removed and joined
+   together — so "kebabrull" finds "Kebab i Rull". */
 function tokenMatches(haystack, token) {
   if (!token) return true;
   if (haystack.includes(token)) return true;
+
+  const words = haystack.split(/[^a-z0-9]+/).filter(Boolean);
+
+  // Compressed form — drop 1- and 2-letter connector words, join the rest.
+  const compact = words.filter(w => w.length >= 3).join('');
+  if (compact.includes(token)) return true;
+
   if (token.length < 4) return false;
-  // Slide window; compare against each word in haystack
-  const words = haystack.split(/[^a-z0-9]+/);
+
   for (const w of words) {
-    if (!w) continue;
     if (w.length < token.length - 1 || w.length > token.length + 1) continue;
     if (levenshtein(w, token) <= 1) return true;
   }
