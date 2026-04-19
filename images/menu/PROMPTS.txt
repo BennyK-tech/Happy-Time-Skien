@@ -1,0 +1,86 @@
+HAPPY TIME SKIEN — AI IMAGE PROMPTS
+====================================
+
+Save each generated image using the exact filename below. The menu will
+automatically pick them up. Recommended format: JPEG, ~1200x900 px,
+landscape, tight crop on the food, clean neutral or warm background.
+
+Base style (prepend to every prompt):
+"High-quality, appetizing food photography, natural lighting, shallow depth of
+field, top-down or 45-degree angle, clean background, vibrant colors, realistic
+textures, restaurant menu style --ar 4:3"
+
+
+KEBAB
+-----
+kebab-i-pita.jpg            — Kebab in pita bread with lettuce, onion, tomato, corn, cucumber, kebab sauce
+kebab-i-rull.jpg            — Kebab wrap (durum-style roll) with salad, onion, tomato, corn, cucumber, kebab sauce
+super-kebab-i-rull.jpg      — Large loaded kebab wrap with bacon, cheese, fries, kebab meat, all vegetables, kebab sauce
+kebab-tallerken.jpg         — Kebab platter with fries, salad, onion, tomato, cucumber, kebab sauce and flatbread
+kebab-salat.jpg             — Kebab salad bowl with lettuce, corn, onion, tomato, cucumber, kebab sauce
+kylling-i-pita-brod.jpg     — Grilled chicken in pita with lettuce, onion, tomato, corn, cucumber, sauce
+kylling-i-rull.jpg          — Chicken wrap with lettuce, onion, tomato, corn, cucumber, kebab sauce
+kylling-tallerken.jpg       — Chicken platter with fries, salad, onion, tomato, corn, cucumber, sauce and bread
+super-kebab-tallerken.jpg   — Loaded kebab platter with kebab meat, bacon, cheese wrapped in flatbread, fries, salad, garlic dressing
+mexicano-kebab-i-rull.jpg   — Spicy kebab wrap with kebab meat, fries, jalapenos and hot sauce, steam rising
+kebab-i-rull-m-fetaost.jpg  — Kebab wrap with kebab meat, feta cheese crumbles, all salad and kebab sauce
+cheesy-bacon-kebab.jpg      — Kebab wrap with fries, kebab meat, cheese sauce drizzle, crispy bacon, kebab sauce
+cheesy-skinke-kebab.jpg     — Kebab wrap with fries, kebab meat, cheese sauce, sliced ham, kebab sauce
+
+PIZZA
+-----
+margherita.jpg              — Classic Margherita pizza, tomato sauce, melted cheese, fresh basil
+skinke-pizza.jpg            — Pizza with tomato sauce, cheese and sliced ham
+capricciosa.jpg             — Pizza with tomato, cheese, ham and mushrooms
+pepperoni-pizza.jpg         — Pepperoni pizza with tomato sauce, cheese, pepperoni slices and onion
+hawaii-pizza.jpg            — Hawaiian pizza with tomato, cheese, ham and pineapple chunks
+norge-spesial.jpg           — Norwegian special pizza with tomato, cheese, fries, kebab meat and kebab sauce
+kebab-pizza.jpg             — Kebab pizza with tomato sauce, cheese, kebab meat and kebab sauce drizzle
+trippel-pizza.jpg           — Loaded pizza with pepperoni, ham, bacon, onion and mushrooms
+biff-pizza.jpg              — Steak pizza with tomato sauce, cheese, beef, bell pepper, onion, mushrooms and bearnaise drizzle
+mamma-mia-spesial.jpg       — Spicy loaded pizza with chicken, beef, peppers, onion, mushrooms, jalapenos and garlic dressing
+kylling-pizza.jpg           — Chicken pizza with tomato, cheese, chicken, peppers, onion, mushrooms, garlic dressing
+fifty-fifty-pizza.jpg       — Pizza half chicken half kebab with kebab dressing, split clearly down the middle
+vegetar-pizza.jpg           — Vegetarian pizza with tomato, cheese, peppers, onion, mushrooms, tomato, corn and pineapple
+
+INNBAKT (CALZONE)
+-----------------
+calzone.jpg                 — Folded calzone pizza with tomato sauce, melted cheese and ham inside, golden crust
+romana.jpg                  — Calzone with tomato sauce, cheese, ham and mushrooms inside
+spesial-calzone.jpg         — Calzone with tomato, cheese and kebab meat, kebab sauce served on the side
+
+BARNEMENY
+---------
+margarita-pizza.jpg         — Kid-sized margherita pizza, tomato and cheese only
+hamburger.jpg               — Kid-sized classic cheeseburger with fries, fresh salad and dressing
+
+ANDRE RETTER
+------------
+lovbiff-steak.jpg           — Thin-sliced beef steak with fries, salad, onion, corn, tomato, cucumber, bearnaise sauce and bread
+biff-snadder-tallerken.jpg  — Beef stir-fry platter with fries, peppers, onion, mushrooms, bearnaise sauce and bread
+kylling-snadder-tallerken.jpg — Chicken stir-fry platter with fries, peppers, onion, mushrooms, bearnaise sauce and bread
+
+HAMBURGER
+---------
+classic-burger.jpg          — Classic burger with lettuce, onion, tomato and burger dressing, sesame bun
+cheese-burger.jpg           — Cheeseburger with cheddar, lettuce, onion, tomato, dressing, sesame bun
+hamburger-tallerken.jpg     — Burger platter served with crispy fries
+
+FRIES
+-----
+pommes-frites.jpg           — Golden crispy french fries in a basket or cone, lightly salted
+
+DRIKKE
+------
+coca-cola.jpg               — Coca-Cola 500ml bottle, condensation, studio lighting
+coca-cola-zero-sugar.jpg    — Coca-Cola Zero Sugar 500ml bottle
+pepsi-max.jpg               — Pepsi Max 500ml bottle
+sprite.jpg                  — Sprite 500ml bottle
+urge.jpg                    — Urge soda 500ml bottle (Norwegian green citrus soda)
+fanta-appelsin.jpg          — Fanta Orange 500ml bottle
+telemark-naturell.jpg       — Telemark Kildevann natural still water 500ml bottle
+kuli-jordbaer-eple.jpg      — Kuli strawberry and apple juice 200ml carton
+
+Tip for Nano Banana / Gemini: request 4:3 landscape output, ~1200x900, and tell
+it "no text, no logos, photorealistic, sharp focus on the food". For the
+branded drinks, use a reference image of the real product if the tool supports it.
