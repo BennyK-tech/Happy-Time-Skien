@@ -48,7 +48,7 @@ function getStatus() {
     const h = HOURS[checkDay];
     if (!h) continue;
     if (i === 0 && mins < h.open) {
-      return { open: false, nextDay: checkDay, nextOpen: h.open, isToday: true };
+      return { open: false, nextDay: checkDay, nextOpen: h.open, isToday: true, minsToOpen: h.open - mins };
     }
     if (i > 0) {
       return { open: false, nextDay: checkDay, nextOpen: h.open, isToday: false };
@@ -87,10 +87,17 @@ function updateAnnouncement() {
       textEl.innerHTML = `Åpent nå · Stenger kl. <strong>${minsToTimeStr(s.closesAt)}</strong>`;
     }
   } else {
-    bar.classList.add('closed');
     if (s.nextDay === undefined) {
+      bar.classList.add('closed');
       textEl.textContent = 'Stengt';
+    } else if (s.isToday && s.minsToOpen <= 15) {
+      bar.classList.add('soon');
+      textEl.innerHTML = `Åpner straks — <strong>${s.minsToOpen} ${s.minsToOpen === 1 ? 'minutt' : 'min'}</strong>`;
+    } else if (s.isToday && s.minsToOpen <= 60) {
+      bar.classList.add('soon');
+      textEl.innerHTML = `Åpner snart · om <strong>${formatDuration(s.minsToOpen)}</strong>`;
     } else {
+      bar.classList.add('closed');
       const dayLabel = s.isToday ? 'i dag' : DAY_NAMES[s.nextDay];
       textEl.innerHTML = `Stengt · Åpner ${dayLabel} kl. <strong>${minsToTimeStr(s.nextOpen)}</strong>`;
     }
@@ -223,7 +230,7 @@ function renderPreview(category) {
     const imgSrc = it.image || `images/menu/${previewSlug(it.name)}.jpg`;
     return `
       <article class="item-card item-card-visual" data-cat="${category}">
-        <div class="item-visual" data-emoji="${emoji}">
+        <div class="item-visual" data-cat="${category}" data-emoji="${emoji}">
           <img src="${imgSrc}" alt="${it.name}" loading="lazy" onerror="this.remove()" />
         </div>
         <div class="item-body">

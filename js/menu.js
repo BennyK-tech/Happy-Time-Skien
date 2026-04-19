@@ -112,6 +112,7 @@ function renderMenuPage() {
   main.innerHTML = CATEGORIES.map(c => {
     const items = MENU_DATA.filter(i => i.cat === c.key);
     const emoji = CAT_EMOJI[c.key] || '🍽️';
+    const catLabel = c.label.toLowerCase();
     const cardsHTML = items.map(it => {
       const tagsHTML = it.tags
         ? `<div class="item-tags">${it.tags.map(t =>
@@ -122,9 +123,10 @@ function renderMenuPage() {
         : '';
       const tagAttr = it.tags ? ` data-tags="${it.tags.join(',')}"` : '';
       const imgSrc = it.image || `images/menu/${slug(it.name)}.jpg`;
+      const searchBlob = [it.name, it.desc, catLabel, c.key, (it.tags || []).join(' ')].join(' ').toLowerCase();
       return `
-        <article class="item-card item-card-visual" data-name="${it.name.toLowerCase()}" data-desc="${it.desc.toLowerCase()}"${tagAttr}>
-          <div class="item-visual" data-emoji="${emoji}">
+        <article class="item-card item-card-visual" data-name="${it.name.toLowerCase()}" data-desc="${it.desc.toLowerCase()}" data-cat="${c.key}" data-search="${searchBlob.replace(/"/g, '&quot;')}"${tagAttr}>
+          <div class="item-visual" data-cat="${c.key}" data-emoji="${emoji}">
             <img src="${imgSrc}" alt="${it.name}" loading="lazy" onerror="this.remove()" />
           </div>
           <div class="item-body">
@@ -161,8 +163,48 @@ function renderMenuPage() {
 /* ---------- SEARCH + FILTER ---------- */
 const state = { query: '', tags: new Set() };
 
+/* Normalize for search: lowercase, strip diacritics, map æøå → ae/o/a. */
+function norm(s) {
+  return (s || '')
+    .toLowerCase()
+    .replace(/æ/g, 'ae').replace(/ø/g, 'o').replace(/å/g, 'a')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+/* Lightweight typo tolerance: returns true if haystack contains token,
+   or contains a near-match (Levenshtein ≤ 1 for tokens of length ≥ 4). */
+function tokenMatches(haystack, token) {
+  if (!token) return true;
+  if (haystack.includes(token)) return true;
+  if (token.length < 4) return false;
+  // Slide window; compare against each word in haystack
+  const words = haystack.split(/[^a-z0-9]+/);
+  for (const w of words) {
+    if (!w) continue;
+    if (w.length < token.length - 1 || w.length > token.length + 1) continue;
+    if (levenshtein(w, token) <= 1) return true;
+  }
+  return false;
+}
+
+function levenshtein(a, b) {
+  const m = a.length, n = b.length;
+  if (Math.abs(m - n) > 1) return 2; // early-out, we only care ≤1
+  let prev = Array.from({ length: n + 1 }, (_, i) => i);
+  for (let i = 1; i <= m; i++) {
+    const curr = [i];
+    for (let j = 1; j <= n; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      curr[j] = Math.min(curr[j - 1] + 1, prev[j] + 1, prev[j - 1] + cost);
+    }
+    prev = curr;
+  }
+  return prev[n];
+}
+
 function applyFilters() {
-  const q = state.query.trim().toLowerCase();
+  const q = norm(state.query.trim());
+  const tokens = q.split(/\s+/).filter(Boolean);
   const activeTags = Array.from(state.tags);
   const cards = document.querySelectorAll('.item-card');
   const categoryBlocks = document.querySelectorAll('.menu-category-block');
@@ -170,11 +212,10 @@ function applyFilters() {
   let anyVisible = false;
 
   cards.forEach(card => {
-    const name = card.dataset.name || '';
-    const desc = card.dataset.desc || '';
+    const haystack = norm(card.dataset.search || `${card.dataset.name || ''} ${card.dataset.desc || ''}`);
     const cardTags = (card.dataset.tags || '').split(',').filter(Boolean);
 
-    const matchesQuery = !q || name.includes(q) || desc.includes(q);
+    const matchesQuery = tokens.length === 0 || tokens.every(t => tokenMatches(haystack, t));
     const matchesTags  = activeTags.length === 0 || activeTags.every(t => cardTags.includes(t));
 
     const visible = matchesQuery && matchesTags;
