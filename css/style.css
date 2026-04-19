@@ -805,36 +805,6 @@ footer {
 .footer-bottom a { color: var(--text-muted); transition: color var(--ease); }
 .footer-bottom a:hover { color: var(--red); }
 
-/* ============ MOBILE CTA BAR ============ */
-.mobile-cta {
-  display: none;
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  background: var(--white);
-  border-top: 2px solid var(--red);
-  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
-  padding: 10px;
-  gap: 8px;
-  z-index: 80;
-}
-.mobile-cta a {
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 14px 8px;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  font-size: 13.5px;
-  transition: all var(--ease);
-  text-align: center;
-}
-.mobile-cta .cta-call  { background: var(--green); color: #fff; }
-.mobile-cta .cta-call:active  { background: var(--green-dark); }
-.mobile-cta .cta-order { background: var(--red); color: #fff; }
-.mobile-cta .cta-order:active { background: var(--red-dark); }
-
 /* ============ REVEAL ANIMATION ============ */
 .reveal {
   opacity: 0;
@@ -877,8 +847,6 @@ footer {
     font-size: 16px;
   }
   .nav-links.open a::after { display: none; }
-  .mobile-cta { display: none !important; }
-  body.has-mobile-cta { padding-bottom: 0; }
   section { padding: 60px 0; }
   .hero { padding: 48px 0 56px; }
   .hero-logo { width: 110px; height: 110px; }
