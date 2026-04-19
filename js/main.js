@@ -256,9 +256,28 @@ function initQuickMenu() {
   }
 }
 
+/* Keep --ann-h in sync with the actual rendered announcement height
+   so the nav and sticky menu tools stack flush below it with no gap,
+   even when the text wraps to two lines on narrow viewports. */
+function syncAnnouncementHeight() {
+  const bar = document.getElementById('announcement');
+  if (!bar) return;
+  const apply = () => {
+    const h = Math.round(bar.getBoundingClientRect().height);
+    if (h > 0) document.documentElement.style.setProperty('--ann-h', h + 'px');
+  };
+  apply();
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(apply).observe(bar);
+  } else {
+    window.addEventListener('resize', apply);
+  }
+}
+
 /* ---------- INIT ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   updateAnnouncement();
+  syncAnnouncementHeight();
   setInterval(updateAnnouncement, 30 * 1000); // every 30s for live countdown
   initNav();
   highlightCurrentDay();
