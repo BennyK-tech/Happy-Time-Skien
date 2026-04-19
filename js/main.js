@@ -125,13 +125,6 @@ function initNav() {
   }
 }
 
-/* ---------- MOBILE CTA ---------- */
-function initMobileCTA() {
-  if (document.querySelector('.mobile-cta')) {
-    document.body.classList.add('has-mobile-cta');
-  }
-}
-
 /* ---------- HIGHLIGHT CURRENT DAY IN HOURS LIST ---------- */
 function highlightCurrentDay() {
   const list = document.getElementById('hours-list');
@@ -268,7 +261,6 @@ document.addEventListener('DOMContentLoaded', () => {
   updateAnnouncement();
   setInterval(updateAnnouncement, 30 * 1000); // every 30s for live countdown
   initNav();
-  initMobileCTA();
   highlightCurrentDay();
   initReveal();
   initQuickMenu();
