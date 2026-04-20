@@ -79,7 +79,10 @@ const CATEGORIES = [
   { key: 'drikke',    label: 'Drikke' }
 ];
 
-const CAT_EMOJI = {
+/* Renamed to avoid colliding with the identically-named top-level const
+   in main.js — both scripts load on menu.html, and duplicate top-level
+   `const` declarations throw SyntaxError and abort the whole script. */
+const MENU_CAT_EMOJI = {
   kebab: '🥙', pizza: '🍕', innbakt: '🥐', barnemeny: '🧒',
   hamburger: '🍔', andre: '🍽️', fries: '🍟', drikke: '🥤'
 };
@@ -111,7 +114,7 @@ function renderMenuPage() {
   // Main content — grouped by category
   main.innerHTML = CATEGORIES.map(c => {
     const items = MENU_DATA.filter(i => i.cat === c.key);
-    const emoji = CAT_EMOJI[c.key] || '🍽️';
+    const emoji = MENU_CAT_EMOJI[c.key] || '🍽️';
     const catLabel = c.label.toLowerCase();
     const cardsHTML = items.map(it => {
       const tagsHTML = it.tags
