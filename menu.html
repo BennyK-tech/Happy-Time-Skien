@@ -3,9 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meny — Happy Time Skien</title>
-  <meta name="description" content="Full meny hos Happy Time Skien — kebab, pizza, innbakt pizza, burger, barnemeny og mer. Søk, filtrer og finn favoritten din." />
-  <link rel="icon" href="images/logo.png" />
+  <title>Meny — Happy Time Skien | Pizza · Kebab · Burger i Skien</title>
+  <meta name="description" content="Full meny hos Happy Time Skien — kebab, pizza, innbakt pizza, burger, barnemeny og mer. Søk, filtrer og finn favoritten din. Priser fra 45 kr." />
+  <meta name="theme-color" content="#d42b2b" />
+  <link rel="canonical" href="https://happytimeskien.vercel.app/menu" />
+  <link rel="icon" href="/images/logo.png" />
+  <link rel="apple-touch-icon" href="/images/logo.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Open Graph / Social share -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Happy Time Skien" />
+  <meta property="og:url" content="https://happytimeskien.vercel.app/menu" />
+  <meta property="og:title" content="Meny — Happy Time Skien" />
+  <meta property="og:description" content="Full meny hos Happy Time Skien — kebab, pizza, innbakt, burger, barnemeny og mer." />
+  <meta property="og:image" content="https://happytimeskien.vercel.app/images/Butikkforside.jpeg" />
+  <meta property="og:image:alt" content="Happy Time Skien meny" />
+  <meta property="og:locale" content="nb_NO" />
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Meny — Happy Time Skien" />
+  <meta name="twitter:description" content="Full meny hos Happy Time Skien — kebab, pizza, burger og mer." />
+  <meta name="twitter:image" content="https://happytimeskien.vercel.app/images/Butikkforside.jpeg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,6 +33,39 @@
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/menu.css" />
+
+  <!-- Structured data: schema.org Menu -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    "name": "Happy Time Skien — Full meny",
+    "url": "https://happytimeskien.vercel.app/menu",
+    "inLanguage": "no",
+    "provider": {
+      "@type": "Restaurant",
+      "name": "Happy Time Skien",
+      "url": "https://happytimeskien.vercel.app/",
+      "telephone": "+4740334488",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Kongens gate 7",
+        "postalCode": "3717",
+        "addressLocality": "Skien",
+        "addressCountry": "NO"
+      }
+    },
+    "hasMenuSection": [
+      { "@type": "MenuSection", "name": "Kebab" },
+      { "@type": "MenuSection", "name": "Pizza" },
+      { "@type": "MenuSection", "name": "Innbakt Pizza" },
+      { "@type": "MenuSection", "name": "Hamburger" },
+      { "@type": "MenuSection", "name": "Barnemeny" },
+      { "@type": "MenuSection", "name": "Andre Retter" },
+      { "@type": "MenuSection", "name": "Drikke" }
+    ]
+  }
+  </script>
 </head>
 <body>
 

@@ -1,0 +1,25 @@
+{
+  "name": "Happy Time Skien",
+  "short_name": "Happy Time",
+  "description": "Pizzeria, kebab og burger i Skien sentrum. Bestill på Foodora, Wolt eller ring oss.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#d42b2b",
+  "lang": "no",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
